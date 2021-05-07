@@ -1,0 +1,6 @@
+name: PluginTemplate
+main: de.whsminecraft.PluginTemplate.Main
+author: Ruben Ollesch
+api-version: 1.16
+version: 1.0
+website: https://whsminecraft.de
