@@ -1,0 +1,13 @@
+# Default world is "world" - as in overworld. Enter the name of the world directory.
+# x, y, and x are obviously required. yaw and pitch are optional and default to 0.
+hub:
+  x: 99992
+  y: 172
+  z: 12
+  yaw: -90
+netherhub:
+  world: world_nether
+  x: 11
+  y: 50
+  z: -2
+  yaw: 180
