@@ -1,6 +1,8 @@
 package de.whsminecraft.GetMeThere;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
 
@@ -27,23 +29,25 @@ public class DataStore {
 
         locations = new HashMap<>();
         for (String name : locationNames) {
-            Location l = new Location();
-            l.name = name;
-            l.x = locationSection.getInt(name + ".x");
-            l.y = locationSection.getInt(name + ".y");
-            l.z = locationSection.getInt(name + ".z");
-            l.yaw = (float) locationSection.getDouble(name + ".yaw");
-            l.pitch = (float) locationSection.getDouble(name + ".pitch");
             String worldName = locationSection.getString(name + ".world");
             if (worldName == null) {
                 worldName = "world";
             }
-            l.world = Bukkit.getWorld(worldName);
-            if (l.world == null) {
+            World world = Bukkit.getWorld(worldName);
+            if (world == null) {
                 plugin.getLogger().severe("No world \"" + worldName + "\" was found for location \"" + name + "\". Skipping...");
-            } else {
-                locations.put(name, l);
+                continue;
             }
+
+            Location l = new Location(
+                    world,
+                    locationSection.getInt(name + ".x"),
+                    locationSection.getInt(name + ".y"),
+                    locationSection.getInt(name + ".z"),
+                    (float) locationSection.getDouble(name + ".yaw"),
+                    (float) locationSection.getDouble(name + ".pitch")
+            );
+            locations.put(name, l);
         }
     }
 }

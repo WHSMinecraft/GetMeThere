@@ -2,6 +2,7 @@ package de.whsminecraft.GetMeThere;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
@@ -44,9 +45,15 @@ public class TeleportCommand extends BukkitCommand {
             locationName = a[a.length-1];
         }
         Location l = dataStore.getLocations().get(locationName);
-        plugin.getLogger().info("Teleporting " + player.getDisplayName() + " to " + locationName + " (x=" + l.x + " y=" + l.y + " z=" + l.z + ")");
-        org.bukkit.Location target = new org.bukkit.Location(l.world, l.x, l.y, l.z, l.yaw, l.pitch);
-        player.teleport(target);
+        plugin.getLogger().info(
+                "Teleporting " + player.getDisplayName() +
+                        " to " + locationName +
+                        " (x=" + l.getX() +
+                        " y=" + l.getY() +
+                        " z=" + l.getZ() +
+                        " world=" + l.getWorld().getName() +
+                        ")");
+        player.teleport(l);
         return true;
     }
 }

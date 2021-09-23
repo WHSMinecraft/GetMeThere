@@ -1,6 +1,7 @@
 package de.whsminecraft.GetMeThere;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +12,6 @@ import java.util.Map;
 public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
-        getLogger().info("Plugin was successfully enabled.");
         saveDefaultConfig();
 
         DataStore ds = new DataStore(this);
@@ -24,6 +24,7 @@ public class Main extends JavaPlugin {
             TeleportCommand cmd = new TeleportCommand(e.getKey(), this, ds);
             getCommandMap().register(getName(), cmd);
         }
+        getLogger().info("Plugin was successfully enabled.");
     }
 
     @Override
