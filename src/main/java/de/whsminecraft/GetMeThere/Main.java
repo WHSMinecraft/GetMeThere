@@ -17,8 +17,7 @@ public class Main extends JavaPlugin {
         DataStore ds = new DataStore(this);
 
         ds.readFromDisk();
-        getLogger().info(ds.getLocations().toString());;
-        getLogger().info(ds.getLocations().get("hub").toString());
+        getLogger().info("Following locations are set up: " + ds.getLocations().toString());;
 
         for (Map.Entry<String, Location> e: ds.getLocations().entrySet()) {
             TeleportCommand cmd = new TeleportCommand(e.getKey(), this, ds);

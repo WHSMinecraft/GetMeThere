@@ -25,7 +25,6 @@ public class DataStore {
     public void readFromDisk() {
         ConfigurationSection locationSection = plugin.getConfig().getConfigurationSection("");
         Set<String> locationNames = locationSection.getKeys(false);
-        plugin.getLogger().info("List of locations: " + locationNames.toArray().toString());
 
         locations = new HashMap<>();
         for (String name : locationNames) {
