@@ -41,9 +41,9 @@ public class DataStore {
 
             Location l = new Location(
                     world,
-                    locationSection.getInt(name + ".x"),
-                    locationSection.getInt(name + ".y"),
-                    locationSection.getInt(name + ".z"),
+                    locationSection.getDouble(name + ".x"),
+                    locationSection.getDouble(name + ".y"),
+                    locationSection.getDouble(name + ".z"),
                     (float) locationSection.getDouble(name + ".yaw"),
                     (float) locationSection.getDouble(name + ".pitch")
             );
